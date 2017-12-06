@@ -2,6 +2,11 @@
 
 # expo
 .expo/
+adb.*
+haste-map-*
+metro-bundler-*
+react-native-packager-*
+.com.google.*
 
 # misc
 .env.local

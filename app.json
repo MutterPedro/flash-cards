@@ -1,5 +1,21 @@
 {
   "expo": {
-    "sdkVersion": "23.0.0"
-  }
+    "sdkVersion": "23.0.0",
+    "orientation": "portrait",
+    "name": "Flash Cards",
+    "description": "React Native project to Udacity React Nanodegree Program.",
+    "slug": "flashcards",
+    "version": "1.0",
+    "primaryColor": "#0f7173",
+    "icon": "https://lh6.ggpht.com/dBOz8ZO_746cfxbQ91Yta9GSEmiEWZzkb27VNCTuG1SQ855uKTVo00WUvvR7YOSQBoUF=w300",
+    "notification": {
+      "icon": "https://smartyreader.com/assets/flashcards_icon_dark-88fdf30b1c19f9a4298ff943f9f02cae.png"
+    },
+    "ios": {
+      "bundleIdentifier": "org.flashcards.exp"
+    },
+    "android": {
+      "package": "org.flashcards.exp"
+    }
+  },
 }

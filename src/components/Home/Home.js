@@ -1,10 +1,11 @@
 import React from 'react';
 import {Platform, StatusBar, StyleSheet, View} from 'react-native';
-import {TabNavigator} from 'react-navigation';
+import {TabNavigator, StackNavigator} from 'react-navigation';
 import {Constants} from 'expo';
 import Decks from '../Decks/Decks';
 import NewDeck from '../NewDeck/NewDeck';
-import {fiveth, primary} from "../../utils/colors";
+import Deck from'../Deck/Deck';
+import {fiveth, primary, white} from "../../utils/colors";
 
 function FlashCardsStatusBar({backgroundColor, ...props}) {
     return (
@@ -36,7 +37,7 @@ const Tabs = TabNavigator({
         activeTintColor: Platform.OS === 'ios' ? primary : fiveth,
         style: {
             height: 56,
-            backgroundColor: Platform.OS === 'ios' ? fiveth : primary,
+            backgroundColor: Platform.OS === 'ios' ? white : primary,
             shadowColor: 'rgba(0, 0, 0, 0.24)',
             shadowOffset: {
                 width: 0,
@@ -48,12 +49,27 @@ const Tabs = TabNavigator({
     }
 });
 
+const MainNavigator = StackNavigator({
+    Home: {
+        screen: Tabs
+    },
+    Deck: {
+        screen: Deck,
+        navigationOptions: {
+            headerTintColor: fiveth,
+            headerStyle: {
+                backgroundColor: primary
+            }
+        }
+    }
+});
+
 class Home extends React.Component {
     render() {
         return (
             <View style={styles.container}>
                 <FlashCardsStatusBar backgroundColor={primary} barStyle="light-content"/>
-                <Tabs/>
+                <MainNavigator/>
             </View>
         );
     }

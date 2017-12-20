@@ -31,7 +31,7 @@ class Decks extends Component {
                 {keys.length > 0 ? keys.map(id => (
                         <TouchableOpacity key={id} style={[styles.deck, styles.center]} onPress={() => this.deckDetail(id)}>
                             <Text style={styles.deckTitle}>{decks[id].title}</Text>
-                            <Text style={styles.deckCardsNumber}>{decks[id].questions.length + " cards"}</Text>
+                            <Text style={styles.deckCardsNumber}>{`${decks[id].questions.length}  card${decks[id].questions.length !== 1 ? "s" : ""}`}</Text>
                         </TouchableOpacity>
                     )) :
                     <View style={styles.center}>

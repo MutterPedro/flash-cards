@@ -6,6 +6,7 @@ import Decks from '../Decks/Decks';
 import NewDeck from '../NewDeck/NewDeck';
 import Deck from'../Deck/Deck';
 import {fiveth, primary, white} from "../../utils/colors";
+import AddCard from "../AddCard/AddCard";
 
 function FlashCardsStatusBar({backgroundColor, ...props}) {
     return (
@@ -56,6 +57,16 @@ const MainNavigator = StackNavigator({
     Deck: {
         screen: Deck,
         navigationOptions: {
+            headerTintColor: fiveth,
+            headerStyle: {
+                backgroundColor: primary
+            }
+        }
+    },
+    AddCard: {
+        screen: AddCard,
+        navigationOptions: {
+            title: "Add Card",
             headerTintColor: fiveth,
             headerStyle: {
                 backgroundColor: primary

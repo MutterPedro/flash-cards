@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {ActivityIndicator, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {connect} from 'react-redux';
-import {getDeck} from "../../actions";
-import {secundary, primary, white} from "../../utils/colors";
+import {NavigationActions} from 'react-navigation';
+import {getDeck} from '../../actions';
+import {secundary, primary, white} from '../../utils/colors';
 
 class Deck extends Component {
     state = {
@@ -12,6 +13,17 @@ class Deck extends Component {
         return {
             title: `${navigation.state.params.title}`,
         };
+    };
+
+    toAddCard = () => {
+        const {navigation} = this.props;
+        const {id} = navigation.state.params;
+        const navigationAction = NavigationActions.navigate({
+            routeName: "AddCard",
+            params: {id}
+        })
+
+        navigation.dispatch(navigationAction);
     };
 
     componentDidMount() {
@@ -34,7 +46,7 @@ class Deck extends Component {
                 <Text style={styles.deckCards}>{(deck.questions && `${deck.questions.length} cards`) || ""}</Text>
                 {Object.keys(deck)[0] && (
                     <View style={styles.buttonsContainer}>
-                        <TouchableOpacity style={styles.addCardButton}>
+                        <TouchableOpacity style={styles.addCardButton} onPress={() => this.toAddCard()}>
                             <Text style={styles.addCardButtonText}>Add Card</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.startQuizButton}>

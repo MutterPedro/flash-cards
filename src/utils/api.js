@@ -22,10 +22,10 @@ export function saveDeckTitle(title) {
 }
 
 export function addCardToDeck(card, deckId) {
-    return getDeck(deckId).then(({title, cards = []}) => AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({
+    return getDeck(deckId).then(({title, questions = []}) => AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({
         [deckId]: {
             title,
-            questions: cards.push(card)
+            questions: [...questions, card]
         }
     }))).then(JSON.parse);
 }

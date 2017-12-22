@@ -26,6 +26,15 @@ class Deck extends Component {
         navigation.dispatch(navigationAction);
     };
 
+    toQuiz = () => {
+        const {navigation} = this.props;
+        const navigationAction = NavigationActions.navigate({
+            routeName: "Quiz"
+        });
+
+        navigation.dispatch(navigationAction);
+    };
+
     componentDidMount() {
         const {navigation, fetchDeck} = this.props;
         const {id} = navigation.state.params;
@@ -49,9 +58,10 @@ class Deck extends Component {
                         <TouchableOpacity style={styles.addCardButton} onPress={() => this.toAddCard()}>
                             <Text style={styles.addCardButtonText}>Add Card</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.startQuizButton}>
+                        {deck.questions.length > 0 &&
+                        <TouchableOpacity style={styles.startQuizButton} onPress={() => this.toQuiz()}>
                             <Text style={styles.startQuizButtonText}>Start Quiz</Text>
-                        </TouchableOpacity>
+                        </TouchableOpacity>}
                     </View>
                 )}
             </View>

@@ -2,11 +2,13 @@ import React from 'react';
 import {Platform, StatusBar, StyleSheet, View} from 'react-native';
 import {TabNavigator, StackNavigator} from 'react-navigation';
 import {Constants} from 'expo';
+import {fiveth, primary, white} from "../../utils/colors";
+
 import Decks from '../Decks/Decks';
 import NewDeck from '../NewDeck/NewDeck';
 import Deck from'../Deck/Deck';
-import {fiveth, primary, white} from "../../utils/colors";
 import AddCard from "../AddCard/AddCard";
+import Quiz from "../Quiz/Quiz";
 
 function FlashCardsStatusBar({backgroundColor, ...props}) {
     return (
@@ -67,6 +69,16 @@ const MainNavigator = StackNavigator({
         screen: AddCard,
         navigationOptions: {
             title: "Add Card",
+            headerTintColor: fiveth,
+            headerStyle: {
+                backgroundColor: primary
+            }
+        }
+    },
+    Quiz: {
+        screen: Quiz,
+        navigationOptions: {
+            title: "Quiz",
             headerTintColor: fiveth,
             headerStyle: {
                 backgroundColor: primary

@@ -5,12 +5,18 @@ import {Provider} from 'react-redux';
 import {createStore, applyMiddleware, compose} from 'redux';
 import thunk from 'redux-thunk';
 import reducer from './src/reducers';
+import {setLocalNotification} from "./src/utils/LocalNotification";
 
 const store = createStore(reducer,
     compose(applyMiddleware(thunk))
 );
 
 export default class App extends React.Component {
+
+    componentDidMount(){
+        setLocalNotification();
+    }
+
     render() {
         return (
             <Provider store={store}>

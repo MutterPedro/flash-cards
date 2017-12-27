@@ -3,12 +3,13 @@ import {ActivityIndicator, StyleSheet, Text, TouchableOpacity, View} from 'react
 import {connect} from 'react-redux';
 import {NavigationActions} from 'react-navigation';
 import {getDeck} from '../../actions';
-import {secundary, primary, white} from '../../utils/colors';
+import {secondary, primary, white} from '../../utils/colors';
 
 class Deck extends Component {
     state = {
         ready: false
     };
+
     static navigationOptions = ({navigation}) => {
         return {
             title: `${navigation.state.params.title}`,
@@ -28,8 +29,19 @@ class Deck extends Component {
 
     toQuiz = () => {
         const {navigation} = this.props;
+        const {id} = navigation.state.params;
         const navigationAction = NavigationActions.navigate({
-            routeName: "Quiz"
+            routeName: "Quiz",
+            params: {id}
+        });
+
+        navigation.dispatch(navigationAction);
+    };
+
+    toHistory = () => {
+        const {navigation} = this.props;
+        const navigationAction = NavigationActions.navigate({
+            routeName: "History"
         });
 
         navigation.dispatch(navigationAction);
@@ -61,6 +73,10 @@ class Deck extends Component {
                         {deck.questions.length > 0 &&
                         <TouchableOpacity style={styles.startQuizButton} onPress={() => this.toQuiz()}>
                             <Text style={styles.startQuizButtonText}>Start Quiz</Text>
+                        </TouchableOpacity>}
+                        {(deck.history && deck.history.length) > 0 &&
+                        <TouchableOpacity style={styles.historyButton} onPress={() => this.toHistory()}>
+                            <Text style={styles.startQuizButtonText}>History</Text>
                         </TouchableOpacity>}
                     </View>
                 )}
@@ -105,6 +121,15 @@ const styles = StyleSheet.create({
         paddingLeft: 25,
         paddingRight: 25
     },
+    historyButton: {
+        backgroundColor: secondary,
+        borderRadius: 5,
+        paddingTop: 20,
+        paddingBottom: 20,
+        paddingLeft: 25,
+        paddingRight: 25,
+        marginTop: 15
+    },
     startQuizButtonText: {
         color: white,
         fontSize: 25
@@ -115,7 +140,7 @@ const styles = StyleSheet.create({
     },
     deckCards: {
         fontSize: 20,
-        color: secundary
+        color: secondary
     },
     center: {
         flex: 1,

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
 import {saveDeckTitle, getDecks} from "../../actions";
-import {primary, secundary, white} from "../../utils/colors";
+import {primary, secondary, white} from "../../utils/colors";
 import {NavigationActions} from 'react-navigation';
 
 class NewDeck extends Component {
@@ -14,14 +14,16 @@ class NewDeck extends Component {
         const {title} = this.state;
         const {navigation, newDeck, fetchDecks} = this.props;
 
-        const navigateAction = NavigationActions.navigate({routeName: 'Decks'});
-
         newDeck(title)
-            .then(fetchDecks)
-            .then(() => {
+            .then(result => {
                 this.setState({title: ''});
+                const navigateAction = NavigationActions.navigate({
+                    routeName: 'Deck',
+                    params: {id: Object.keys(result.deck)[0], title}
+                });
                 navigation.dispatch(navigateAction);
             })
+            .then(fetchDecks)
             .catch(console.error)
     };
 
@@ -57,7 +59,7 @@ const styles = StyleSheet.create({
     input: {
         borderRadius: 5,
         borderStyle: 'solid',
-        borderColor: secundary,
+        borderColor: secondary,
         borderWidth: 1,
         maxHeight: 80,
         width: 250,

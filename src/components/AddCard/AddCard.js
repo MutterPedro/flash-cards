@@ -3,7 +3,7 @@ import {View, TextInput, StyleSheet, TouchableOpacity, Text} from 'react-native'
 import {NavigationActions} from 'react-navigation';
 import {connect} from 'react-redux';
 import {addCardToDeck, getDeck, getDecks} from '../../actions';
-import {primary, secundary, white, gray} from '../../utils/colors';
+import {primary, secondary, white, gray} from '../../utils/colors';
 
 class AddCard extends Component {
 
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         borderStyle: "solid",
         borderWidth: 1,
-        borderColor: secundary,
+        borderColor: secondary,
         paddingLeft: 10,
         paddingRight: 10,
         paddingTop: 5,

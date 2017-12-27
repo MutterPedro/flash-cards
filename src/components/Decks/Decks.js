@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, Text, ScrollView, StyleSheet, TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
-import {secundary, gray} from "../../utils/colors";
+import {secondary, gray} from "../../utils/colors";
 import {getDecks} from '../../actions';
 import {NavigationActions} from 'react-navigation';
 
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     deckCardsNumber: {
-        color: secundary
+        color: secondary
     },
     empty: {
         fontSize: 20,

@@ -2,13 +2,14 @@ import React from 'react';
 import {Platform, StatusBar, StyleSheet, View} from 'react-native';
 import {TabNavigator, StackNavigator} from 'react-navigation';
 import {Constants} from 'expo';
-import {fiveth, primary, white} from "../../utils/colors";
+import {quintenarian, primary, white} from '../../utils/colors';
 
 import Decks from '../Decks/Decks';
 import NewDeck from '../NewDeck/NewDeck';
 import Deck from'../Deck/Deck';
-import AddCard from "../AddCard/AddCard";
-import Quiz from "../Quiz/Quiz";
+import AddCard from '../AddCard/AddCard';
+import Quiz from '../Quiz/Quiz';
+import History from '../History/History';
 
 function FlashCardsStatusBar({backgroundColor, ...props}) {
     return (
@@ -37,7 +38,7 @@ const Tabs = TabNavigator({
         header: null
     },
     tabBarOptions: {
-        activeTintColor: Platform.OS === 'ios' ? primary : fiveth,
+        activeTintColor: Platform.OS === 'ios' ? primary : quintenarian,
         style: {
             height: 56,
             backgroundColor: Platform.OS === 'ios' ? white : primary,
@@ -59,7 +60,7 @@ const MainNavigator = StackNavigator({
     Deck: {
         screen: Deck,
         navigationOptions: {
-            headerTintColor: fiveth,
+            headerTintColor: quintenarian,
             headerStyle: {
                 backgroundColor: primary
             }
@@ -69,7 +70,7 @@ const MainNavigator = StackNavigator({
         screen: AddCard,
         navigationOptions: {
             title: "Add Card",
-            headerTintColor: fiveth,
+            headerTintColor: quintenarian,
             headerStyle: {
                 backgroundColor: primary
             }
@@ -79,7 +80,17 @@ const MainNavigator = StackNavigator({
         screen: Quiz,
         navigationOptions: {
             title: "Quiz",
-            headerTintColor: fiveth,
+            headerTintColor: quintenarian,
+            headerStyle: {
+                backgroundColor: primary
+            }
+        }
+    },
+    History: {
+        screen: History,
+        navigationOptions: {
+            title: "History",
+            headerTintColor: quintenarian,
             headerStyle: {
                 backgroundColor: primary
             }

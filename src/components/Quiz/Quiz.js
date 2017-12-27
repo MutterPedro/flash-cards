@@ -32,7 +32,8 @@ class Quiz extends Component {
         this.setState({
             turn: 0,
             score: 0,
-            reveal: false
+            reveal: false,
+            saved: false
         })
     };
 

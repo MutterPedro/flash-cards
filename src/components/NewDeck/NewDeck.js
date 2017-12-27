@@ -14,6 +14,11 @@ class NewDeck extends Component {
         const {title} = this.state;
         const {navigation, newDeck, fetchDecks} = this.props;
 
+        if(!title || title.trim() === ""){
+            alert("The deck title cannot be empty.")
+            return;
+        }
+
         newDeck(title)
             .then(result => {
                 this.setState({title: ''});
